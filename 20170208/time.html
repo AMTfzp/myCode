@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				background: #abcdef;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500px" height="500px" id="canvas"></canvas>
+	</body>
+	<script>
+		var canvas = document.getElementById("canvas");
+		var content =canvas.getContext("2d");
+		function time() {
+			//获取系统时间
+			var now = new Date();
+			var h = now.getHours();
+			var m = now.getMinutes();
+			var s = now.getSeconds();
+
+			
+			content.clearRect(0,0,500,500);
+			content.beginPath();
+			//画圆
+			content.arc(250,250,200,0,2*Math.PI);
+			content.strokeStyle="aquamarine";
+			content.lineWidth=10;
+			content.closePath();
+			content.stroke();
+			
+			//事件刻度
+			function drawpan (num,color,width,angle,move) {
+				for (var i=0;i<num;i++) {
+					content.save();
+					content.beginPath();
+					content.strokeStyle=color;
+					content.lineWidth=width;
+					content.translate(250,250);
+					content.rotate(i*angle*Math.PI/180);
+					content.moveTo(0,move);
+					content.lineTo(0,-195);
+					content.closePath();
+					content.stroke();
+					content.restore();	
+				}
+			}
+			drawpan(60,"yellow",10,6,-180);
+			drawpan(12,"blue",10,30,-170);
+			//指针
+			function zhizheng (color,width,time,angle,move) {
+				content.save();
+				content.beginPath();
+				content.strokeStyle=color;
+				content.lineWidth=width;
+				content.translate(250,250);
+				content.rotate(time*angle*Math.PI/180);
+				content.moveTo(0,move);
+				content.lineTo(0,10);
+				content.closePath();
+				content.stroke();
+				content.restore();	
+			}
+			zhizheng("red",2,s,6,-160);
+			zhizheng("green",3,(m+s/60),6,-130);
+			zhizheng("aqua",3,(h+m/60),30,-100);
+		}
+		time();
+		setInterval(time,1000);
+	</script>
+</html>

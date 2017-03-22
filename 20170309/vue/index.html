@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="container">
+    {{1+5}}
+    <!--{{person}}-->
+    <ul>
+        <li>{{person.name}}</li>
+        <li>{{person.age}}</li>
+    </ul>
+
+    <ul>
+        <li>
+            <p>{{person.name}}</p>
+            <p v-text="person.age"></p>
+        </li>
+    </ul>
+    <div v-text="infoHTML"></div>
+    <div v-html="infoHTML"></div>
+
+    <p>
+        <input stype="text" v-model="message">
+    </p>
+    <p v-text="message"></p>
+    <ul>
+        <li v-for="obj in persons">
+            <p v-text="obj.name"></p>
+            <p v-text="obj.age"></p>
+        </li>
+    </ul>
+</div>
+
+</body>
+<script src="app.js"></script>
+</html>

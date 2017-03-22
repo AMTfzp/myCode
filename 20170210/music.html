@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				background: #abcdef;
+			}
+		</style>
+	</head>
+	<body>
+		<audio id="mp3" controls="controls"></audio>
+		<div id="box"></div>
+		<script>
+			function init() {
+		        var audioplay = document.getElementById("mp3");
+		        document.addEventListener("dragover",function (event) {
+		            event.preventDefault();
+		        })
+		        document.addEventListener("drop",function (event) {
+		            event.preventDefault();
+		            console.log(event.dataTransfer.files);
+		            var file = event.dataTransfer.files[0];
+		            if (file.type =="audio/mp3" ){
+		                audioplay.src = file.name;
+		            }
+		            var div = document.getElementById("box");
+		       		var s = document.createElement("div");
+			        s.innerHTML = file.name;
+			        div.appendChild(s);
+			        s.onclick =function() {
+			        	audioplay.src =file.name;
+			        	audioplay.play();
+			        }
+		        })
+		       	 	
+		    }
+    		init();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form id="biaodan"> 
+		    <input type="text" name="username" id="UserID" />
+		    <input type="password" name="password" id="password" />
+		  <button type="submit" id="register" name="注册" value="Submit">注册</button>
+		</form>  
+	</body>
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		$("#register").on("click",function() {
+			var user =getUser();
+			$.post("http://datainfo.duapp.com/shopdata/userinfo.php",{
+				status:"register",
+				userID:user.userID,
+				password:user.password,
+			},function(data) {
+				console.log(data);
+			})
+		})
+		
+		function getUser() {
+			var user = {
+				userID :$("#UserID").val(),
+				password:$("#password").val()
+			}
+			return user;
+		}
+	</script>
+</html>

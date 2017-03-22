@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="Chart.js"></script>
+	</head>
+	<body>
+		<canvas width="900px" height="500px" id="canvas"></canvas>
+		<script>
+			var canvas = document.getElementById("canvas");
+			var cxt =canvas.getContext("2d");
+			var chart = new Chart(cxt);
+			var data = [
+							{
+								value : 11,
+								color: "#D97041"
+							},
+							{
+								value : 33,
+								color: "#C7604C"
+							},
+							{
+								value :55,
+								color: "#21323D"
+							},
+							{
+								value : 77,
+								color: "#9D9B7F"
+							},
+							{
+								value : 99,
+								color: "#7D4F6D"
+							},
+							{
+								value : 111,
+								color: "#584A5E"
+							}
+						]
+			chart.PolarArea(data);
+		</script>
+	</body>
+</html>

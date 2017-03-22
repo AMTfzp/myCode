@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin:0;padding: 0;list-style: none;text-decoration: none;
+		}
+		#carousel{
+			width:499px;height:334px;position: relative;overflow: hidden;
+		}
+		#main{
+			width: 3493px;height:334px;position: absolute;left: 0;
+		}
+		#main li{
+			float: left;
+		}
+		#circles{
+			position: absolute;top: 300px;right: 0;
+		}
+		#circles li{
+			float: left;width: 20px;height: 30px;background: #fff;margin-left: 10px;
+			display: block;
+		}
+		#leftBtn {
+			background: red;
+			position: absolute;
+            left:10px;
+            top: 140px;
+        }
+        #rightBtn{
+        	background: red;
+        	position: absolute;
+            right:10px;
+            top: 140px;
+        }
+	</style>
+	<body>
+		<div id="carousel">
+			<ul id="main" style="transition: all 1s linear;">
+				<li><img src="img/01.jpg" /></li>
+				<li><img src="img/02.jpg" /></li>
+				<li><img src="img/03.jpg" /></li>
+				<li><img src="img/04.jpg" /></li>
+				<li><img src="img/05.jpg" /></li>
+				<li><img src="img/06.jpg" /></li>
+				<li><img src="img/01.jpg" /></li>
+			</ul>
+			<ul id="circles">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+			<P id="leftBtn"><a href="#">&lt;</a></P>
+			<P id="rightBtn"><a href="#">&gt;</a></P>
+		</div>
+		<script>
+			var btns= document.getElementById("circles").getElementsByTagName("li");
+			var change= document.getElementsByTagName("p");
+			var outer= document.getElementById("carousel");
+			var oUL =document.getElementById("main");
+			banner(outer,oUL,btns,change,499,2000)
+			function banner(outer,oUL,btns,change,banwidth,duration) {
+				var page = 0;
+				var maxpage =btns.length;
+				var timer;
+				var timer1;
+				timer = setInterval(move,duration);
+				function move () {
+					page++;
+					if (page>maxpage) {
+						oUL.style.transition="";
+						oUL.left="0px";
+						page=0;
+						timer1 = setTimeout(function() {
+							page++;
+							oUL.style.transition="all 1s linear";
+							oUL.style.left = page*(-banwidth)+"px";
+						},10)
+					}
+					oUL.style.left = page*(-banwidth)+"px"
+				}
+				for (var i=0;i<btns.length;i++) {
+					btns[i].index=i;
+					btns[i].onmousemove=function() {
+						page=this.index;
+						oUL.style.left = page*(-banwidth)+"px";
+					}
+				}
+				outer.onmousemove=function() {
+					clearInterval(timer);
+					clearTimeout(timer1);
+					change[0].style.display ="block";
+					change[1].style.display ="block";
+				}
+				outer.onmouseout=function() {
+					timer = setInterval(move,duration);
+					change[0].style.display ="none";
+					change[1].style.display ="none";
+				}
+				change[0].onclick=function() {
+					page--;
+					if (page<0) {
+						oUL.style.transition = "";
+						page = maxpage;
+						timer1 = setTimeout(function() {
+							page--;
+							oUL.style.transition="all 1s linear";
+							oUL.style.left = page*(-banwidth)+"px";
+						},10)
+					}
+					oUL.style.left = page*(-banwidth)+"px";
+				}
+				change[1].onclick=function() {
+					page++;
+					if (page>maxpage) {
+						oUL.style.transition = "";
+						page = 0;
+						timer1 = setTimeout(function() {
+							page++;
+							oUL.style.transition="all 1s linear";
+							oUL.style.left = page*(-banwidth)+"px";
+						},10)
+					}
+					oUL.style.left = page*(-banwidth)+"px";
+				}
+			}
+		</script>
+	</body>
+</html>

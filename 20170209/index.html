@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="500px" height="500px"></canvas>
+	</body>
+	<script>
+		var canvas = document.getElementById("canvas");
+		var content = canvas.getContext("2d");
+		var line = content.createLinearGradient(0,0,500,500);
+		 content.save();
+		 line.addColorStop(0,"red");
+		 line.addColorStop(0.5,"yellow");
+		 line.addColorStop(1,"green");
+		 content.fillStyle=line;
+		 content.fillRect(0,0,500,500);
+		 content.restore();
+		 content.font = "60px 宋体";
+		 content.shadowBlur=5;
+		 content.shadowColor = "burlywood";
+		 content.shadowOffsetX=10;
+		 content.shadowOffsetY=10;
+		 content.fillText("Hello world",100,200);
+	</script>
+</html>

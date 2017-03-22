@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//cdn.bootcss.com/angular.js/1.6.3/angular.js"></script>
+</head>
+<body ng-app="app">
+<div ng-controller="main">
+      <button ng-click="switch()">点击</button>
+    <div ng-show="showFilst">aaa</div>
+    <div ng-hide="showFilst">bbb</div>
+    <div>{{data}}</div>
+    <div>{{data|date:"year"}}</div>
+    <div>{{data|date:"hh"}}</div>
+    <div>{{data|date:"MM"}}</div>
+    <div>{{data|date:"mm"}}</div>
+    <div>{{data|date:"ss"}}</div>
+    <div>{{data|date:"yyyy年MM月d号 hh:mm:ss"}}</div>
+    <form name="appForm">
+        <input type="text"name="numPhone" ng-model="Phone" ng-pattern="/^1(3|4|5|7|8)\d{9}$/"><p ng-show="appForm.numPhone.$invalid" >输入内容必须是手机号</p>
+        <button ng-click="check()">提交</button>
+    </form>
+</div>
+<script>
+    var app=angular.module("app",[]);
+    app.controller("main",function ($scope) {
+        $scope.showFilst=true;
+        $scope.switch = function () {
+            this.showFilst=!this.showFilst;
+        }
+        $scope.data= new Date();
+
+    })
+</script>
+</body>
+</html>

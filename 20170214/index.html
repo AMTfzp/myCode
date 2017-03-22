@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<button id="play_btn">play</button>
+	</body>
+	<script>
+		(function() {
+			var context = new AudioContext();
+			var bufferSource = context.createBufferSource();
+			function init () {
+				player("薛之谦 - 刚刚好.mp3");
+				var playBtn = document.getElementById("play_btn");
+				playBtn.onclick = function() {
+					play();
+				}
+
+			}
+			init();
+			function player(url) {
+				loadAudio(url,function(arraybuffer) {
+					context.decodeAudioData(arraybuffer,function(buffer) {
+						bufferSource.buffer = buffer;
+						//bufferSource.connect(context.destination);
+						var compNode = compre();
+						bufferSource.connect(compNode);
+						compNode.connect(context.destination);
+					})
+				})
+			}
+			function compre() {
+				var compressorNode = context.createDynamicsCompressor();
+				compressorNode.threshold.value = -50;//阀门 值越大压缩范围越小-100-0；
+				compressorNode.knee.value =10;//压缩强度 正比例0-40
+				compressorNode.ratio.value =10;//1-20
+				compressorNode.attack.value=1;//起始缓冲 决定开始音量 正比例
+				compressorNode.release.value=0.5;//结束缓冲
+				return compressorNode;
+			}
+			function play() {
+				if (bufferSource) {
+					bufferSource.start()
+				}
+
+			}
+			function loadAudio(url,callback) {
+				var request = new XMLHttpRequest();
+				request.open("GET",url);
+				request.responseType = "arraybuffer";
+				request.onload = function() {
+					if (callback) {
+			 			callback(request.response);
+			 		}
+				}
+				request.send();
+			}
+		})()
+	</script>
+</html>

@@ -1,0 +1,10 @@
+<div>
+    <button ng-click="update()">点击更新</button>
+    <ul>
+        <li ng-repeat="news in List track by $index">
+            <img ng-src="{{news.imagePath}}" alt="">
+            <h3 ng-bind="news.title"></h3>
+            <p ng-bind="news.des"></p>
+        </li>
+    </ul>
+</div>

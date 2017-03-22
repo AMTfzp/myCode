@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<form>
+			<div>
+				<label for="username">用户名：</label>
+				<input id="username"/>
+			</div>
+			<div>
+				<label for="password">密码：</label>
+				<input id="password"/>
+			</div>
+			<button id="login">登录</button>
+		</form>
+		
+		<Script>
+			/*document.onclick = function(event){
+				if (sessionStorage.num){
+					sessionStorage.num = Number(sessionStorage.num)+1;
+				} else {
+					sessionStorage.num = 1;
+				}
+				var div = document.createElement("div");
+				div.innerHTML=sessionStorage.num;
+				div.style.left=event.clientX+"px";
+				div.style.top=event.clienty+"px";
+				document.body.appendChild(div);
+			}*/
+			window.onload = function() {
+				var userName =document.getElementById("username");
+				var passWord =document.getElementById("password");
+				var login =document.getElementById("login");
+				
+				login.onclick =function() {
+					localStorage.getItem("username",username.value);
+					localStorage.setItem("passWord",passWord.value);
+				}
+			}
+		
+		</Script>
+	</body>
+</html>

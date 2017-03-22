@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../angular.js"></script>
+</head>
+<body>
+<!--init初始化数据-->
+<div ng-init="name='小明';list=[{age:33},{age:33},{age:66}]">
+    <!--ng-bind 可以绑定数据模型 不可以绑定输入控件模型-->
+    <p ng-bind="name"></p>
+
+    <!--在输入控件里面 绑定数据模型使用ng-model-->
+    <input type="text" ng-model="name">
+
+    <!--数组中 尽量不要直接存放字符串和数字 需要存放对象类型的元素-->
+    <!--如果存放相同数字就会提示错误-->
+    <p ng-repeat="item in list" ng-bind="item.age"></p>
+    <!--ng-href ng-src URL需要放{{}}里边-->
+    <input type="text" ng-model="url">
+    <a ng-href="{{url}}">跳转到</a>
+</div>
+
+<!--必须在 这个控制器的范围内 才能使用绑定在controller 中($scope)的变量-->
+<div ng-controller="homeController">
+    <p ng-bind="person.name"></p>
+    <p ng-click="toRequestAction()">请求数据</p>
+    <p ng-bind="data.version"></p>
+
+    <!--1.没有使用 angular里面自定的服务 只要是 angular中内置的服务 都回去帮咱实现$apply 这个服务的(传递数据模型中的数据)
+    2.如果 不适用 内置服务 就需要 自己去调用 $apply 这个服务-->
+    <input type="text" ng-model="age">
+
+</div>
+<div ng-controller="findController" style="background-color: palegoldenrod">
+        <p ng-bind="name" ng-click="show(name)"></p>
+</div>
+<script src="myService.js"></script>
+<script src="controllers.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

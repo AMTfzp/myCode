@@ -1,0 +1,66 @@
+body {
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        color:#000;
+        margin: 0;
+        padding: 0;
+}
+.swiper-container {
+    width: 100%;
+    height: 50%;
+    margin: 0 auto;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    line-height: 300px;
+}
+.nav-top{
+	width: 100%;height: 85%;overflow-y: scroll;border-bottom: 1px solid black;
+}
+.nav-top::-webkit-scrollbar{width:0;}
+/*商品详情*/
+.details{
+	width: 100%;
+	height: 50%;
+	border-top: 1px solid black;text-align: left;
+	padding-left: 1rem;
+}
+.details>b{
+	font-size:1.5rem;padding: 0.8rem 0;display: block;
+}
+.price{
+	color:#FF0000;font-size: 1.3rem;
+}
+.discount{
+	margin-left: 1rem;color:#DC143C;font-size: 0.8rem;
+}
+.buynumber{
+	float: right;color: #777777;font-size:1rem;margin-top: 2rem;
+}
+.detailText{
+	line-height: 1.5rem;font-size: 1rem;float: left;margin: 0;margin-top: 0.5rem;
+}
+.original{
+	text-align: left;text-decoration: line-through;margin-left: 0.5rem;color: #C0C0C0;
+}
+/*购物车按钮*/
+.shoppingCart{
+	width: 100%;height: 15%;font-size: 1rem;
+}
+.shoppingCart>button{
+	height: 60%;border:none;outline-style: none;margin: 1rem 0.5rem 0 0;text-align: center;
+}
+button:nth-child(1){
+	width: 22%;background: #FFFFFF;border: 1px solid #000000;
+}
+button:nth-child(2){
+	width: 22%;background: #FFFFFF;border: 1px solid #000000;
+}
+button:nth-child(3){
+	background:#C7013F;margin-right: 0;color: #FFFFFF;width: 48%;
+}
+#carnumber{
+	width: 1.2rem;height: 1rem;position: absolute;top: 0.2rem;left: 50%;border-radius: 50%;
+	border: 2px solid #FFFFFF;background: #DC143C;color: #FFFFFF;display: block;
+}

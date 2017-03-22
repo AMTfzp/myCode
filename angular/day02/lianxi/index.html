@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../angular.js"></script>
+</head>
+<body ng-controller="homeController">
+
+<p>
+    <label for="title-input">标题：</label>
+    <input type="text" id="title-input" ng-model="book.title">
+</p>
+<p>
+    <label for="price-input">价格：</label>
+    <input type="number" id="price-input" ng-model="book.price">
+</p>
+<button ng-click="toSave(book)">保存</button>
+<ul>
+    <!--track by 可以解决在遍历数组的时候重复内容报错的问题。angluar在遍历数组的时候回创建一个hashkey元素用于区分是不是重复内容   可以通过给一唯一的标识符让angular查看是不是重复track by $index下标的解决办法
+    -->
+    <li ng-repeat="item in books track by $index">
+        <h1 ng-bind="item.title"></h1>
+        <p ng-bind="item.price"></p>
+        <hr>
+    </li>
+</ul>
+
+
+<script src="models.js"></script>
+<script src="services.js"></script>
+<script src="controller.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

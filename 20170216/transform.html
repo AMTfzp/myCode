@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin: 0;padding: 0;
+		}
+		div{
+			width: 250px;overflow: hidden;float: left;position: relative;
+		}
+		h2,p,div,img{transition: all 2s;color: #98FB98; }
+		div:nth-child(1) h2,div:nth-child(1) p{
+			position: absolute;
+			left:50px;
+		}
+		div:nth-child(1) h2{
+			top: 200px;
+		}
+		div:nth-child(1):hover h2{
+			transform: translateY(-50px);
+		}
+		div:nth-child(1):hover p{
+			transform: translateY(-150px);
+		}
+		div:nth-child(1):hover img{
+			opacity: 0.5;transform: translateX(-100px);
+		}
+		#box2 p{width:120px;height: 20px;background: #FFFFFF;position: absolute;left: -150px;}
+		.p1{top: 80px;}
+		.p2{top: 110px;}
+		.p3{top: 140px;}
+		div:nth-child(2):hover .p1{
+			transform:translatex(200px);
+		}
+		div:nth-child(2):hover .p2{
+			transform:translatex(200px);
+			transition-delay: 0.5s;
+		}
+		div:nth-child(2):hover .p3{
+			transform:translatex(200px);
+			transition-delay: 1s;
+		}
+	</style>
+	<body>
+		<div id="box">
+			<img src="img/01.jpg" />
+			<h2>平移动画</h2>
+			<p>简单地CSS3过渡效果</p>
+		</div>
+		<div id="box2">
+			<img src="img/03.jpg" />
+			<p class="p1">动画效果</p>
+			<p class="p2">动画效果</p>
+			<p class="p3">动画效果</p>
+		</div>
+	</body>
+</html>

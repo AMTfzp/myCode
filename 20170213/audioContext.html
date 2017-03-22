@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="play_btn">play</button>
+	</body>
+	<script type="text/javascript">
+		(function() {
+			function init () {
+				var context = new AudioContext();
+				var playBtn = document.getElementById("play_btn");
+				playBtn.onclick = function() {
+					loadAudio("薛之谦 - 丑八怪.mp3",function(arraybuffer) {
+						//创建缓冲区资源对象
+						var source = context.createBufferSource()
+						//开始解码音频数据,；两个菜蔬，一个形参 第二个是解码之后的回调函数
+						context.decodeAudioData(arraybuffer,function(buffer) {
+							//设置我们缓冲区域buffer
+							source.buffer = buffer;
+							//连接音频节点
+							//source.connect(context.destination);
+							//增加效果器
+//							var pannerNode = panner(context);
+//							pannerNode.pan.value =1;//-1到1
+//							source.connect(pannerNode);
+//							pannerNode.connect(context.destination);
+							//创建生相效果器
+//							var gainNode = gain(context);
+//							gainNode.gain.value = 50;
+//							source.connect(gainNode);
+//							gainNode.connect(context.destination);
+							//回旋混响效果器
+							var convolverNode =convolver(context);
+							convolverNode.buffer = buffer;
+							source.connect(convolverNode);
+							convolverNode.connect(context.destination)
+							source.start();
+
+						})
+					})
+				}
+			}
+			//回旋混响效果器
+			function convolver (context) {
+				return context.createConvolver();
+			}
+			//效果增益器
+			function gain (context) {
+				return context.createGain();
+			}
+			//创建生相效果器
+			function panner (context) {
+				return context.createStereoPanner();
+			}
+			init();
+			//加载音频方法
+			function loadAudio(url,callback) {
+				var request = new XMLHttpRequest();
+				request.open("GET",url,true);
+				request.responseType = "arraybuffer";
+				request.onload = function() {
+					if (callback) {
+			 			callback(request.response);
+			 		}
+				}
+				request.send();
+			}
+		})()
+	</script>
+</html>

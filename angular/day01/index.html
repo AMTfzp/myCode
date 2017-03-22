@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app" ng-app="app">
+    <div ng-controller="main">
+        <button ng-click="clickRed('hello',$event)" ng-bind="btn.red"></button>
+        <button ng-click="clickGreen()">{{btn.green}}</button>
+        <button ng-click="clickBlue()">{{btn.green}}</button>
+        <p>您选择的颜色是：{{chooseColor}}</p>
+    </div>
+
+</div>
+
+<!--<script src="../angular.js"></script>-->
+<script src="//cdn.bootcss.com/angular.js/1.6.3/angular.js"></script>
+<script>
+    var app = angular.module("app",[]);
+    app.controller("main",function ($scope) {
+        //定btn中属性名称
+        $scope.btn = {
+            red: "红色",
+            green: "绿色",
+            blue: "蓝色"
+        };
+        $scope.chooseColor = "";
+        $scope.clickRed = function () {
+            $scope.chooseColor = $scope.btn.red;
+        };
+        $scope.clickGreen = function () {
+            $scope.chooseColor = $scope.btn.green;
+        };
+        $scope.clickBlue = function () {
+            $scope.chooseColor = $scope.btn.blue;
+        };
+
+    })
+</script>
+</body>
+</html>

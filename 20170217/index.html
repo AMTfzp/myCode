@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+		*{margin: 0;padding: 0;}
+		#box{
+			
+			width: 200px;
+			height: 200px;
+			transform-style: preserve-3d;
+			margin: 100px auto;
+			-webkit-animation: move 10s linear infinite;
+		}
+		.seclect{
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			font-size: 150px;
+			text-align: center;
+			opacity: 0.5;
+		}
+		@-webkit-keyframes move{
+			from{transform:rotateX(-20deg) rotateY(0deg);}
+			to{transform:rotateX(-20deg) rotateY(360deg);}
+		}
+		.seclect:nth-child(1){
+			background: red;
+			transform:translateZ(173px);
+		}
+		.seclect:nth-child(2){
+			background: yellow;
+			transform:rotateY(-60deg) translateZ(173px);
+		}
+		.seclect:nth-child(3){
+			background: green;
+			transform:rotateY(240deg) translateZ(173px);
+		}
+		.seclect:nth-child(4){
+			background: blue;
+			transform:rotateY(-180deg) translateZ(173px);
+		}
+		.seclect:nth-child(5){
+			background: greenyellow;
+			transform:rotateY(-240deg) translateZ(173px);
+		}
+		.seclect:nth-child(6){
+			background: blueviolet;
+			transform:rotateY(60deg) translateZ(173px);
+		}
+	</style>
+	<body>
+		<div id="box">
+			<div class="seclect">1</div>
+			<div class="seclect">2</div>
+			<div class="seclect">3</div>
+			<div class="seclect">4</div>
+			<div class="seclect">5</div>
+			<div class="seclect">6</div>
+		</div>
+	</body>
+</html>

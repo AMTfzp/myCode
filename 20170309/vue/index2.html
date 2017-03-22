@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="container">
+    <ul>
+        <li v-for="oj in list">
+            <ul>
+                <li v-for="item in oj.data">
+                    <h3 v-text="item.name"></h3>
+                    <p v-text="item.age"></p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script src="app2.js"></script>
+</body>
+</html>

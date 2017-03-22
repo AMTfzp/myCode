@@ -1,0 +1,30 @@
+
+ng-app:声明应用程序的指令，一个程序中必须要有该指令
+
+ng-model:声明数据双向绑定的指令，说明将表单的数据绑定到应用程序中
+
+ng-bind:声明绑定数据
+
+module:
+	通过angular.module方法
+		该方法有两个参数{程序的名称，依赖的服务}
+
+控制器
+	ng-controller是用来控制应用程序的
+		app的controller方法有两个参数{控制器的名称，控制器的构造函数}
+		参数是你需要的数据，需要什么传递什么
+	...
+		app.controller("main",function($scope){
+			$scope.stark="heihei";
+			$scope.sex="0"
+		})
+
+	...
+
+控制器的作用域
+	$scope用来实现与视图连接，在$scope上定义的数据，可以用在视图上，视图上绑定的数据可在$scope上获取
+	$scope:是通过原型式继承实现的，所以子作用域会继承父作用域中的变量，但是我们可以为子作用域添加变量来覆盖父作用域中的变量
+
+定义事件
+	ng-事件名称，如ng-click="clickBtn()"
+	clickBtn方法定义在作用域中，在DOM通过添加ng-click属性实现绑定事件，注：事件方法名称后一定加括号

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//cdn.bootcss.com/angular.js/1.6.3/angular.js"></script>
+</head>
+<body>
+<div id="app" ng-app="app">
+    <div ng-controller="main">
+        <div ng-repeat="x in name">{{x.name+""+x.sex}}</div>
+        <!--转换成金钱显示-->
+        <div>{{price|currency}}</div>
+        <!--转换json数据-->
+        <div>{{btn|json}}</div>
+        <!--过滤-->
+        <div>{{color|filter:"o"}}</div>
+        <div>{{color|filter:filterChar}}</div>
+        <div>{{color|filter:isUpper}}</div>
+        <!--显示前六个-->
+        <div>{{data|limitTo:6}}</div>
+        <div>{{color|limitTo:3}}</div>
+        <!--大写-->
+        <div>{{data|uppercase}}</div>
+        <!--number 过滤数字-->
+        <div>{{num}}</div>
+        <div>{{num|number}}</div>
+        <div>{{num|number:-8}}</div>
+        <!--orderBy排序 true是大到小  false是小到大-->
+        <div>{{arr|orderBy:"age":false}}</div>
+    </div>
+</div>
+<script>
+    var app=angular.module("app",[]);
+    app.controller("main",function ($scope) {
+        $scope.price = 37901;
+        $scope.btn={
+            red:"红色",
+            green:"绿色",
+            blue:[1,2,3]
+        }
+        $scope.color=["red","Blue","Yellow","Greeen","orgen","汉子"]
+        $scope.isUpper = function (color) {
+            return color[0] == color[0].toUpperCase();
+        }
+        $scope.name = [
+            {name:"zhangsan",sex:"男"},
+            {name:"miaoyan",sex:"男"},
+            {name:"anna",sex:"女"},
+            {name:"yangy",sex:"女"}
+        ]
+        $scope.data = "dmsakomsifwei";
+        $scope.num = 123456789.123456789;
+        $scope.arr=[
+            {name:"json",phone:"888-9090",age:33},
+            {name:"dsad",phone:"821-9340",age:22},
+            {name:"htrh",phone:"548-9654",age:11},
+            {name:"tewr",phone:"123-4567",age:35},
+            {name:"rew3",phone:"234-5432",age:23}
+        ]
+    })
+</script>
+</body>
+</html>

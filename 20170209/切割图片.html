@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		canvas{
+			background:#abcdef;
+		}
+	</style>
+	<body>
+		<canvas id="canvas" width="500px"height="500px"></canvas>
+		<script>
+			var canvas = document.getElementById("canvas");
+			var content = canvas.getContext("2d");
+			var img = new Image();
+			img.src="img/6.jpg";
+			/*img.onload = function() {
+					content.drawImage(img,0,0);
+			}*/
+			img.onload = function() {
+				var pat =content.createPattern(img,"repeat");
+				content.fillStyle=pat;
+				content.fillRect(0,0,500,500);
+			}
+			content.beginPath();
+			content.arc(180,80,60,0,2*Math.PI);
+			content.clip();
+		</script>
+	</body>
+</html>

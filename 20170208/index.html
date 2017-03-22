@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			canvas{
+				background: #abcdef;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500px" height="500px" id="canvas"></canvas>
+	</body>
+	<script>
+		var canvas = document.getElementById("canvas");
+		var content =canvas.getContext("2d");
+		function int () {
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			var x = Math.random()*500;
+			var y = Math.random()*500;
+			var width = Math.random()*100;
+			var height = Math.random()*100;
+			content.strokeStyle= "rgb("+r+","+g+","+b")";
+			content.fillRect(x,y,width,height);
+		}
+		setInterval(int,1000);
+	</script>
+</html>

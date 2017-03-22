@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>英雄难过棍子关</title>
+		<style type="text/css">
+			*{
+				margin: 0;padding: 0;
+			}
+			div{
+				width: 500px;text-align: center;margin: 20px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<canvas id="canvas" width="300" height="500">
+				你该换浏览器了
+			</canvas>
+		</div>
+		<script>
+			var canvas = document.getElementById("canvas");
+			var c = canvas.getContext("2d");
+			var j1x=0;j1y=0;j1w=60;
+			var j2x=0;j2y=0;j2w=0;
+			var j3x=0;j3y=0;j3w=0;
+			var playx = 0; playy=0;fenshu = 0;
+			var gx = 0;gy = 0; gc = 0;
+			start();
+			//初始化界面
+			function start() {
+				c.clearRect(0,0,300,500)
+				 j1x=0;j1y=0;j1w=60;
+				 j2x=0;j2y=0;j2w=0;
+				 j3x=0;j3y=0;j3w=0;
+				 //人物的位置
+				 playx = 40; playy=330;fenshu = 0;
+				 //棍子的位置
+				 gx = 60;gy = 330; gc = 0;
+				 c.fillStyle = "#ABCDEF";
+				 c.fillRect(0,0,300,500);
+				 c.fillStyle = "black";
+				 c.fillRect(j1x,350,j1w,150);
+				 j2x =Math.floor(Math.random()*160+20)+j1x+j1w;
+				 j2w =Math.floor(Math.random()*60+20);
+				 c.fillRect(j2x,350,j2w,150);
+				 j3x =Math.floor(Math.random()*160+20)+j2x+j2w;
+				 j3w =Math.floor(Math.random()*60+20);
+				 c.fillRect(j3x,350,j3w,150);
+				 c.fillStyle = "red";
+				 c.fillRect(playx,playy,20,20);
+				 hfenshu();
+				 c.fillStyle = "azure";
+				 c.font = "40px 宋体"
+				 c.fillText("space start",40,100)
+			}
+			function hfenshu() {
+				c.fillStyle = "aquamarine";
+				c.font = "40px 宋体"
+				c.fillText(fenshu,140,40)
+			}
+			document.onkeydown = function(e) {
+				var keyid = e.keyCode;
+				if (keyid == 32) {
+					c.strokeStyle = "darkmagenta";
+					c.lineWidth =3;
+					c.moveTo(playx+20,playy+20);
+					c.lineTo(gx,gy);
+					c.stroke();
+					gy-=5;
+					gc = 350-gy;
+					
+				} else if (keyid == 13) {
+					start();
+				}else{
+					alert("按键无效")
+				}
+			}
+			window.addEventListener("keyup",dokeyup,false);
+			function dokeyup (e) {
+				var keyid = e.keyCode;
+				if (keyid == 32) {
+					gy =350;
+					c.beginPath();
+					c.lineWidth = 4;
+					c.strokeStyle = "darkmagenta";
+					c.moveTo(playx+20,playy+20);
+					c.lineTo(playx+20+gc,gy);
+					c.stroke();
+					c.beginPath();
+					c.lineWidth = 4;
+					c.strokeStyle = "#ABCDEF";
+	                c.moveTo(playx+20,playy+20);
+	                c.lineTo(playx+20,350-gc);
+	                c.stroke();
+	                moveplay();
+				}
+			}
+			function moveplay() {
+				c.beginPath();
+				c.fillStyle= "#abcdef";
+				c.fillRect(playx,playy,20,20);
+				c.beginPath();
+				c.fillStyle= "red";
+				playx +=5;
+				c.fillRect(playx,playy,20,20);
+				if (playx<=(gc+j1w-20)) {
+					setTimeout(moveplay,30);
+				} else{
+					if ((gc+j1w)>j2x&&(j1w+gc)<(j2x+j2w)) {
+						c.beginPath();
+						c.fillStyle= "#abcdef";
+						c.fillRect(playx,playy,20,20);
+						c.beginPath();
+						c.fillStyle="red";
+						playx =j2w+j2x-20;
+						c.fillRect(playx,playy,20,20);
+						fenshu++;
+						moveall();
+					}else{
+						gameover();
+					}
+				}
+			}
+			function moveall() {
+				c.fillStyle ="#abcdef";
+				c.fillRect(0,0,300,500);
+				c.fillStyle="black";
+				j1x--;
+				j2x--;
+				j3x--;
+				playx--;
+				c.fillRect(j1x,350,j1w,150);
+				c.fillRect(j2x,350,j2w,150);
+				c.fillRect(j3x,350,j3w,150);
+				c.fillStyle = "red";
+				c.fillRect(playx,playy,20,20);
+				hfenshu();
+				if (j2x!=0) {
+					setTimeout(moveall,3)
+				} else{
+					change();
+				}
+			}
+			function change() {
+				j1x =j2x;
+				j1w =j2w;
+				j2x =j3x;
+				j2w =j3w;
+				j3x =Math.floor(Math.random()*160+20)+j2x+j2w;
+				j3w =Math.floor(Math.random()*60+20);
+				gx =j1w;
+			}
+			function gameover() {
+				c.fillStyle = "#abcdef";
+				c.fillRect(0,0,300,500);
+				c.fillStyle="#fff";
+				c.font = "40px 宋体";
+				c.fillText("得分"+fenshu,60,200);
+				c.fillStyle="red";
+				c.font = "40px 宋体";
+				c.fillText("GAME OVER",60,150);
+				c.fillStyle="#fff";
+				c.font = "40px 宋体";
+				c.fillText("Enter play",60,250);
+			}
+		</script>
+	</body>
+</html>

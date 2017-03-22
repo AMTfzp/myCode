@@ -1,0 +1,171 @@
+*{
+		margin: 0;padding: 0;text-decoration: none;list-style-type: none;
+	}
+.box{
+	width: 100%;
+	height:100%;
+	position: absolute;
+}
+
+html, body {
+    height: 100%;
+}
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    color:#000;
+    margin: 0;
+    padding: 0;
+}
+/*头部开始*/
+header{
+	height: 8%;
+	width: 100%;
+	position: fixed;
+	z-index: 999;
+	border-bottom: 1px solid #d3d3d3;
+}
+header>a{
+	width:8rem;height:2rem;margin: 0 auto;margin-top: 0.5rem;display: block;
+}
+#logo{
+	width:2rem;height:2rem;position: absolute;left: 1rem;top: 0.5rem;
+}
+.logoIN{
+	width: 100%;height: 100%;
+}
+/*头部结束*/
+/*主体部分开始*/
+nav{
+	position: absolute;top: 8%;bottom: 10%;
+	
+	width: 100%;
+	height: 82%;
+	text-align: center;
+	overflow-y: scroll;
+}
+/*中间标题*/
+.navigation{
+	width: 100%;
+	height: 2rem;
+	background: #f6f6f6;
+	color: #757575;
+	text-align: center;line-height: 2rem;
+	border-bottom: 1px solid #ebebeb;
+}
+/*表单开始*/
+nav>form{
+width: 100%;height: 70%;text-align: center;
+}
+nav>form>p{color: red;}
+nav>form>input{
+	width: 90%;height: 3rem;border: none;
+	margin-top: 0.5rem;font-size: 1rem;outline:none;
+}
+nav>form>.input-lan{
+	margin-top: 2rem;
+	border: 1px solid #e3e3e3;
+}
+#zdlanding{width: 95%;height: 1rem;padding-left: 5%;padding-top: 0.5rem;}
+#zdlanding>input{
+	color: #c7013f;margin-top: 0.2rem;
+	float:left;
+}
+#zdlanding>label{
+	float: left;
+}
+
+#register,#landing{
+	background: #c7013f;color: #FFFFFF;
+}
+#zhuce{
+	background: #fff;border: 1px solid #a6a6a6;outline: none;
+	width: 90%;height: 3rem;margin-top: 0.5rem;
+}
+/*表单结束*/
+/*底部开始*/
+footer{
+	height:10%;
+	width: 100%;
+	display: -webkit-box;
+	-webkit-box-orient:horizontal;
+	position: fixed;z-index:999; left: 0;bottom: 0;
+	border-top: 1px solid #d3d3d3;
+	text-align: center;
+	line-height: 4rem;
+	color: #5E5E5E;
+	}
+footer>section{
+	-webkit-box-flex:1;
+}
+footer a{
+	color: inherit;
+}
+/*结束*/
+/*弹出框的样式*/
+#tanchukuang{
+	z-index:9999;left: 10%;width: 80%;position: fixed;
+	background:#000000;top:35%;
+}
+#tantext{
+	 border-radius: 30px;color: #fff; margin: 0 auto;padding: 1.5em;
+	 text-align:center;width: 70%;opacity: 0.8;
+ }
+ /*底部图标样式*/
+.dibush{
+	text-align: center;line-height: 100%;
+}
+.gouwuche{
+	position: relative;
+}
+.dibush>a>span{
+	width: 2.8rem;height:2rem;display:block;margin: 0.5rem auto 0;font-size: 1.5rem;
+}
+.dibush>a{
+	display: block;width: 100%;height: 100%;
+}
+.dibush>a>p{
+	font-size: 0.8rem;
+}
+/*菜单*/
+#menu{
+	width: 85%;
+	height: 100%;
+	position: absolute;
+	top: 0;left:-88%;z-index: 9999;background: #393d48;
+	box-shadow: 1px 0 4px 5px rgba(0,0,0,0.5);
+	color: #FFFFFF;font-size: 1.2rem;
+	overflow-y: scroll;
+}
+#menu>ul,#menu>p{
+	margin: 0;
+}
+.menu-header{
+	width: 100%;
+	height: 3rem;line-height: 3rem;
+	border-bottom: 1px solid #20242d;
+	padding-left: 1rem;
+}
+
+.menu-header>p{
+	height: 3rem;margin: 0;
+}
+.menu-header>p>span{
+	width: 3rem;height:3rem;text-align:center;
+	line-height: 3rem;
+}
+.button-ShutDown{
+	float: right;font-size: 1.5rem;
+}
+.pinai{
+	height:4rem;width: 100%;line-height: 4rem;background: #363a45;padding-left: 1rem;
+	/*border-bottom: 1px solid #2b2f3a;*/
+}
+#menu>ul{
+	width: 100%;height:20rem;overflow-y: scroll;
+}
+#menu>ul>li{
+	width: 100%;height: 4rem;line-height: 4rem;background: #424856;padding-left: 1rem;
+	border-top: 1px solid #2b2f3a;
+}
+

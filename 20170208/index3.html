@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				background: #abcdef;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500px" height="500px" id="canvas"></canvas>
+	</body>
+	<script>
+		var canvas = document.getElementById("canvas");
+		var content =canvas.getContext("2d");
+			function shanxin(color,sa,ea,fn){
+				  //中间变量 保存一个值
+				  var nowper =0;
+				  var ox = 50*Math.cos(sa+ea/2);
+				  var oy = 50*Math.sin(sa+ea/2);
+				  var timer = setInterval(function() {
+				  	nowper += ea/100;
+				  	if(nowper>=ea){
+				  		clearInterval(timer);
+				  		nowper = ea;
+				  	}
+					  // 位移到目标点
+					  content.save();
+					  content.translate(250,250);
+					  content.beginPath();
+					  //填充颜色
+					  content.fillStyle=color;
+					  //圆心
+					  content.lineTo(0,0);
+					  // 画出圆弧
+					  content.arc(0,0,100,sa,sa+nowper);
+					  //填充
+					  content.fill();
+					  content.closePath();
+					  if (nowper>=ea) {
+					  	content.beginPath();
+					  	content.fillStyle="black";
+					  	content.font = "20px 宋体";
+					  	content.closePath();
+					  	content.fillText((ea/(2*Math.PI))*100+"%",ox,oy);
+					  	fn();
+					  }
+					  content.restore();
+				  },10)
+				  	  
+			};
+		function hd(pe) {
+			return (pe/100)*2*Math.PI;
+		}
+		shanxin("red",0,hd(30),function() {
+			shanxin("green",hd(30),hd(50),function() {
+				shanxin("yellow",hd(80),hd(20),function() {
+					
+				});
+			});
+		});
+	</script>
+</html>

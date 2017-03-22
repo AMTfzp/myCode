@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas width="1200px" height="600px" id="canvas"></canvas>
+		<script>
+			var canvas = document.getElementById("canvas");
+			var content =canvas.getContext("2d");
+			var heiarr = [139,120,122,105,24,92,70,180,82,190,60,111];
+		//封装一个画线的方法
+		function drowl(starX,starY,endX,endY) {
+			content.beginPath();
+			content.moveTo(starX,starY);
+			content.lineTo(endX,endY);
+			content.closePath();
+			content.stroke();
+		}
+		//封装一个画字的方法
+		function wit(str,x,y) {
+			content.beginPath();
+			content.fillStyle="black";
+			content.fillText(str,x,y);
+			content.closePath();
+		}
+		//调用画线的方法，画出竖线
+		for (var i=0;i<12;i++) {
+			var linw= i*50+300;
+			drowl(linw,80,linw,480);
+			wit((i+1)+"月",linw-10,500);
+		}
+		//循环画出横线和数字
+		for (var i=0;i<11;i++) {
+			var linhei= i*40+80;
+			drowl(300,linhei,850,linhei);
+			wit((200-i*20),275,linhei+5);
+		}
+		function arc(ow,oh) {
+				content.beginPath();
+				content.fillStyle = "red";
+				content.arc(ow,oh,5,0,2*Math.PI);
+				content.fill();
+				content.closePath();
+		}
+		function draw(heiarr) {
+			var m = 0;
+			function drawline(i) {
+					var ow = 300+550/12*i;
+					var oh = 480-heiarr[i]*2;
+					var ox = 300+550/12*(i+1);
+					var oy = 480-heiarr[i+1]*2;
+					
+					
+			}
+					
+		}
+		
+		
+		</script>
+	</body>
+</html>

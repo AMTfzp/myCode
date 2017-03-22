@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script>
+//		for (var i=1;i<10;i++) {
+//			for (var n=0;n<10-i;n++) {
+//				document.write("&nbsp;");
+//			}
+//			for (var j=0;j<i;j++) {
+//				document.write(" * ");
+//			}
+//			document.write("<br/>")
+//		}
+		//声明    定义一个函数
+//		function eatfood(name,how,dishes,money,left){
+//			document.write(name+"有"+how+"元"+"点了"+dishes+"花了"+money+"剩"+(how-money)+"元"+"<br/>");
+//		}
+//		//调用这个函数
+//		eatfood("小宋","100","鱼香肉丝盖饭","8");
+//		eatfood("小王","50","宫保鸡丁盖饭","13");
+//		eatfood("小宋","30","鱼香肉丝盖饭","8");
+//		eatfood("小宋","10","鱼香肉丝盖饭","8");
+//		function pd(a,b){
+//			if (a>b) {
+//				document.write("a="+a,"b="+b);
+//			} else{
+//				document.write("a="+b,"b="+a);
+//			}
+//		}
+//		pd(6,5);
+		//
+//		function pd(a,b,c){
+//			var max;
+//			if (a>b) {
+//				max=a;
+//			} else{
+//				max=b;
+//			}
+//			if(max<c){
+//				max=c;
+//			}
+//			document.write(max);
+//		}
+//		var a=8;
+//		//全局变量保存在全局作用于下的变量
+//		function fn(a){
+//			a++;//局部变量不影响全局变量
+//			console.log(a);
+//			//函数内部修改变量的时候不会影响函数外部原始参数的值
+//			//前提函数传入参数
+//		}
+//		fn(a);//函数不传入参数，获取全局
+//		console.log(a);
+//		(function(a){
+//			console.log(a)
+//		})(1)
+		var a=100;
+		(function(){
+			console.log(a);
+			a=4;
+			console.log(a);
+		})()
+		console.log(a);
+	</script>
+</html>

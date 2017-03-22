@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .full_class{
+            font-weight: bolder;
+            color: #c50afd;
+        }
+    </style>
+    <script src="../20170309/vue/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <!--<div>-->
+        <!--<p v-for="info in list"-->
+           <!--v-text="info.name" @click="checkStudy(info)"-->
+        <!--:class="{class1:isChoose}"></p>-->
+    <!--</div>-->
+
+<div id="container">
+    <!--<textarea v-model="bookList"></textarea>-->
+    <h1>记账本</h1>
+    <p>
+        <label for="title-input">标题</label>
+        <input id="title-input" type="text" v-model="bookInfo.title">
+    </p>
+    <p>
+        <label for="price-input">价格</label>
+        <input id="price-input" type="text" v-model="bookInfo.price">
+    </p>
+    <p>
+        <label for="des-input">描述</label>
+        <input id="des-input" type="text" v-model="bookInfo.des">
+    </p>
+    <button @click="setData(bookInfo)">添加数据</button>
+    <ul>
+        <li v-for="obj in bookList" @click = "addMark(obj)"
+            :class="{full_class:obj.isFull}">
+            <p>
+                <span v-text="obj.title"></span>
+                <span v-text="obj.date"></span>
+            </p>
+            <p v-text="obj.price"></p>
+            <p v-text="obj.des"></p>
+        </li>
+    </ul>
+</div>
+</div>
+<script src="mian.js"></script>
+</body>
+</html>

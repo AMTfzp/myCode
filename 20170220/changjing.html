@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<title></title>
+		<link rel="stylesheet" href="css/swiper-3.4.1.min.css">
+		<link rel="stylesheet" href="css/animate.min.css" />
+    <!-- Demo styles -->
+    <style>
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .swiper-slide:nth-child(1){
+    	background:#3e88f1;
+    }
+    #audio{
+    	width: 50px;height: 50px;position: absolute;
+    	right: 10px;top: 10px;z-index: 998;
+    }
+    .audiosOn{
+    	background: url(img/musicBtn.png) 50% 50% no-repeat;
+    	background-size: cover;animation: music 3s linear infinite;
+    }
+    .audiosOff{
+    	background: url(img/musicBtnOff.png) 50% 50% no-repeat;
+    	background-size: cover;
+    }
+    /*检索横屏竖屏*/
+    @media all and (orientation:portrait) {
+    	#landscape{display:none;}
+    }
+    @media all and (orientation:landscape) {
+		#landscape{display:block;}
+	}
+	#landscape{
+		width: 100%;height: 100%;
+		background: rgba(0,0,0,0.7);
+		position: fixed;top: 0;left: 0;z-index: 999;
+		text-align: center;font-size: 26px;color:#FFFFFF;
+	}
+	#landscape p{width: 280px;height: 26px; position: absolute;top: 50%;left: 50%;
+	margin-left: -140px;margin-top: -13px;}
+	.swiper-one-tille{
+		width: 100%;height: 20%;position: absolute;top:10%;
+	}
+	.swiper-one-tille-img{
+		width:65%;height:95%;z-index: 8;position:relative;
+	}
+	.xiangrikui-one{
+		width: 16%;height: 63%;position: absolute; top: 5%;left: 8%;z-index: 9;
+	}
+	.xiangrikui-two{
+		width: 16%;height: 53%;position: absolute;top: 50%;right: 20%;z-index: 9;
+	}
+	.feiji{
+		width:90%;height: 90%;position:relative; z-index: 99;
+		animation: move 3s linear infinite;
+	}
+	.beijin{
+		width:100%;height: 90%; position: absolute;bottom: 0;left: 0;z-index:10;
+		animation: move 2s linear infinite;
+	}
+	.yuncai{
+		width:90%;height: 65%;position: absolute;left: 5%;top: 6%;z-index:6;
+		animation: move 2.5s linear infinite;
+	}
+	.xinxin{
+		width: 100%;height: 90%; position: absolute;left:0;top:0;z-index:6;
+		animation: move 3s linear infinite;
+	}
+	.chengshi{
+		width: 100%;height:24%;position:absolute;bottom: 0;left:0;z-index:1;
+		}
+	/*第一页背景挂件动画*/
+	@-webkit-keyframes move{
+		0%{transform: scale(1)}
+		50%{transform: scale(1.10)}
+		100%{transform: scale(1)}
+	}
+	@keyframes move{
+		0%{transform: scale(1)}
+		50%{transform: scale(1.10)}
+		100%{transform: scale(1)}
+	}
+	/*音乐播放器动画*/
+	@-webkit-keyframes music{
+		from{transform: rotateZ(0deg);}
+		to{transform: rotateZ(360deg);}
+	}
+	@keyframes music{
+		from{transform: rotateZ(0deg);}
+		to{transform: rotateZ(360deg);}
+	}
+	.sections{
+		width: 100%;height: 100%;position: absolute;top: 0;left: 0; z-index: 6;
+	}
+	.next-one{
+		width: 100%;animation-iteration-count: infinite;
+	}
+	.shanshuo{
+		width: 10%;height: 4%;position: absolute;bottom: 4%;left: 44%;z-index: 9;
+	}
+	/*第二部分*/
+	.two-beijing{
+		width: 100%;height: 100%;position: absolute;background: url(img/wasBg.jpg) 50% 100% no-repeat #000;;
+		background-size: 100% 100%;
+	}
+	.two-liuxin{
+		width: 100%;height: 50%;
+		position: absolute;z-index: 2;left: 0;top: 25%;
+	}
+	.two-liuxinIn{
+		width: 70%;height: 100%;position: absolute;left: 15%;
+	}
+	.two-wenzi{
+		width: 100%;height: 100%;
+	}
+	.two-wenzi img:nth-child(1){
+		width: 54%;height:8%;position:absolute; left:22%;bottom:52%;
+	}
+	.two-wenzi img:nth-child(2){
+		width: 54%;height: 8%;position:absolute;left:22%;bottom:36%;
+	}
+	/*第三部分*/
+	.three-beijing{
+		width: 100%;height:70%;background: url(img/earlyBg.jpg) no-repeat;
+		background-size: cover;
+		position: absolute;top: 0;left: 0;
+	}
+	.three-form{
+		width: 100%;height: 80%;position: absolute;bottom: 4%;left: 0;
+	}
+	.three-form h2 img{
+		width: 30%;height: 6%;position: absolute;top: -14%;left: 0;
+	}
+	.three-chengshi{
+		width: 100%;height: 100%;position: absolute; left: 0;
+	}
+	.lastBus{
+		width: 35%;height: 5%;position: absolute;top:5%;left: 0;
+	}
+	.station{
+		width: 100%;height: 60%;position: absolute;bottom: 0;left: 0;
+	}
+	.three-Bus{
+		width: 100%;height: 100%;position: absolute;left: -15%;
+	}
+	.BusAvatar{
+		width: 25%;height: 14%;position: absolute;right: 5%;bottom: 8%;
+	}
+	.BusCat{
+		width: 70%;height: 30%;position: absolute;left: 0;bottom:5%;
+	}
+	.three-xiaoshi{
+		width: 100%;height: 100%;
+	}
+	.myTeam{
+		width: 100%;height: 100%;position: absolute;left: 0;top: 0;
+	}
+	.three-Wall{
+		width: 28%;height: 57%;position: absolute;right: 0;bottom: 0;
+	}
+	.three-Avatr{
+		width: 30%;height: 20%;position: absolute;bottom: 50%;right:5%;
+	}
+	.three-text{
+		width: 20%;height: 30%;position: absolute;top: 30%;left: 15%;
+	}
+	.three-text img:nth-child(1){
+		width: 60%;height: 11%;position: absolute;top: 0;left: 0;}
+	.three-text img:nth-child(2){
+		width: 92%;height: 16%;position: absolute;top: 15%;left: 0;}
+	.three-text img:nth-child(3){
+		width: 92%;height: 16%;position: absolute;top: 35%;left: 0;}
+	.three-text img:nth-child(4){
+		width: 92%;height: 16%;position: absolute;top: 55%;left: 0;}
+	.WhereText{
+		width: 50%;height: 10%;position: absolute;bottom: 12%;left:30%;
+		z-index: 99;
+	}
+	/*第四部分*/
+	.lighoff{
+		width: 100%;height: 100%;position: absolute;left: 0;top: 0;
+	}
+	.lighoff img:nth-child(1){
+		width: 100%;height: 90%;position: absolute;bottom: 0;left: 0;
+	}
+	.lighoff img:nth-child(2){
+		width: 35%;height: 85%;position: absolute;bottom: 0;left: 3%;z-index: 99;
+	}
+	.lighoff img:nth-child(3){
+		width: 55%;height: 8%;position: absolute;top:5% ;right: 0;z-index: 9;
+	}
+	.lighoff img:nth-child(4){
+		width: 20%;height: 90%;position: absolute;bottom: 0 ;right: 0;z-index: 2;
+	}
+	.diangliangf{
+		width: 100%;height: 100%;position: absolute;top: 0;left: 0;
+	}
+	.dianliang{
+		width: 48%;height: 2%;position: absolute;top:28% ;left: 30%;
+		animation: move 1s linear infinite;
+	}
+	/*点亮之后的*/
+	.lighOn{
+		width: 100%;height: 100%;position: absolute;top: 0;left: 0;background: #1a7fdc;
+	}
+	.lighOn img:nth-child(1){
+		width: 100%;height: 88%;position: absolute;bottom: 0;left: 0;
+	}
+	.lighOn img:nth-child(2){
+		width: 35%;height: 85%;position: absolute;bottom: 0;left: 3%;
+	}
+	.lighOn img:nth-child(3){
+		width: 55%;height:9%;position: absolute;top: 25%;left:33%;
+	}
+	.lighOn img:nth-child(4){
+		width: 30%;height: 12%;position: absolute;bottom: 0;right: 0;
+	}
+	/*第五部分*/
+	.aboutBg{
+		background: url(img/aboutBg.jpg) 0 100% no-repeat #658b0e;
+		background-size: cover;
+	}
+	.footCity{
+		width: 100%;height: 30%;position: absolute;top: 0;left: 0;
+	}
+	.footTa{
+		width:78%;height: 19%;position: absolute;bottom: 30%;left: 12%;
+	}
+	.footAvatar{
+		width: 70%;height: 30%;position: absolute;right: 6%;top: 20%;
+	}
+	.footTx{
+		width:50%;height: 11%;position: absolute;bottom: 33%;left: 25%;
+	}
+	/*第六部分*/
+	.runBj{
+		background:url(img/runBg.jpg) no-repeat #837571;
+		background-size: cover;
+	}
+	.runAvatar{
+		width: 30%;height: 30%;position: absolute;top: 18%;left: 20%;
+	}
+	/*第七部分*/
+	.sevenBj{
+		background: #4add9d;
+	}
+	.salaryAvatar{
+		width: 46%;height: 36%;position: absolute;left: 22%;top: 6%;
+	}
+	.salaryBg{
+		width: 88%;height:55%;position: absolute;left: 6%;top:3%;
+	}
+	.salaryTx{
+		bottom: 26%;
+	}
+	/*第八部分*/
+	.eightBj{
+		background: #b5effd;
+	}
+	.introLogo{
+		width: 48%;height: 8%;position: absolute;left: 26%;top: 7%;z-index: 99;
+	}
+	.introFlowers{
+		width: 24%;height: 10%;position: absolute;left: 3%;top: 4%;
+		animation: move 1s linear infinite;
+	}
+	.introAvatar{
+		width: 34%;height: 25%;position: absolute;right: 0;bottom: 0;z-index: 9;
+	}
+	.introStar{
+		width:16%;height: 10%;position: absolute;right: 30%;bottom: 16%;z-index: 8;
+	}
+	.ninetext{
+		width: 96%;height: 75%;position: absolute;left: 2%;top: 11%;z-index: 6;
+	}
+	.introCloudy{
+		width: 100%;height: 65%;position: absolute;top: 10%;left:0; z-index: 7;
+	}
+	/*第九部分*/
+	.nineBj{
+		background:url(img/endBg.png) no-repeat #3e88f1;
+		background-size:100% 100%;
+	}
+	.nineBj img{position: absolute;}
+	.endLogo{
+		width: 54%;height: 5%;left: 22%;top: 9%;
+	}
+	.endTxt{
+		width: 60%;height: 10%;left: 20%;top: 20%;
+	}
+	.endMail{
+		width: 60%;height: 4%;left: 20%;top: 35%;
+	}
+	.endClickGuide{
+		width: 34%;height: 3%;left: 33%;top: 43%;
+	}
+	.endBottomTxt{
+		width:40%;height: 3%;left: 30%;bottom: 2%;
+	}
+	.endCloudys{
+		width: 88%;height:70%;left: 5%;bottom: 20%;
+	}
+	.endAvatar{
+		width: 64%;height: 18%;left:18%;bottom:33%;
+	}
+    </style>
+</head>
+<body>
+	<!--音乐播放器-->
+	<div id="audio" class="audiosOn">
+            <audio src="img/music.mp3" id="music" autoplay="autoplay"></audio>
+    </div>
+    <!-- Swiper 轮播图-->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+        	<!--第一张轮播图-->
+            <div class="swiper-slide">
+            	<section class="swiper-one-tille">
+            		<img src="img/indexTxt.png" class="swiper-one-tille-img ani" swiper-animate-effect="fadeIn" swiper-animate-delay="0.4s"/>
+            		<img src="img/indexFlowers01.png" class="xiangrikui-one ani" swiper-animate-effect="fadeIn" swiper-animate-delay="0.6s"/>
+            		<img src="img/indexFlowers02.png" class="xiangrikui-two ani" swiper-animate-effect="fadeIn" swiper-animate-delay="0.8s"/>
+            	</section>
+            	<section class="ani" swiper-animate-effect="zoomInDown" swiper-animate-delay="1.7s">
+            		<img src="img/endAvatar.png" class="feiji"/>
+            	</section>
+            	<section  class="ani sections" swiper-animate-effect="zoomIn" swiper-animate-duration="0.7s"swiper-animate-delay="1.2s">
+            		<img src="img/indexElements.png" class="beijin"/>
+            	</section>
+            	<section  class="ani sections" swiper-animate-effect="zoomIn" swiper-animate-duration="0.7s"swiper-animate-delay="1.2s">
+            		<img src="img/indexCloud.png" class="yuncai"/>
+            	</section>
+            	<section class="ani sections" swiper-animate-effect="zoomIn" swiper-animate-duration="0.7s"swiper-animate-delay="1.2s">
+            		<img src="img/indexStars.png" class="xinxin"/>
+            	</section>
+            		<img src="img/indexBuilding.png" class="chengshi ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.2s"swiper-animate-delay="0.2s"/>
+            	<section  class="ani shanshuo"  swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="1.2s" >
+            		<img src="img/arrow-up.png" class="next-one ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2s"/>
+            	</section>
+            </div>
+            <!--第二页开始-->
+            <div class="swiper-slide" style="background:#000000">
+            	<section class="two-beijing ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s">
+            	</section>
+            	<section class="two-wenzi">
+            		<img src="img/wasFarm.png" class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.7s"/>
+            		<img src="img/wasIT.png"  class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.9s"/>
+            	</section>
+            	<section class="two-liuxin ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="1s">
+            		<img src="img/wasStar.png" class="two-liuxinIn ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="1s"/>
+            	</section>
+            	<section  class="ani shanshuo"  swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="1.2s" >
+            		<img src="img/arrow-up.png" class="next-one ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2s"/>
+            	</section>
+            </div>
+            <!--第三页-->
+            <div class="swiper-slide" style="background:#01172c;">
+            	<section class="three-xiaoshi ani"  swiper-animate-effect="fadeOut" swiper-animate-duration="2s" swiper-animate-delay="6.2s">
+            		<img src="img/earlyBg.jpg" class="three-beijing ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0.5s" />
+            	</section>
+            	<section class="three-form ani"  swiper-animate-effect="fadeOut" swiper-animate-duration="1s" swiper-animate-delay="3s">
+            		<h2><img src="img/earlyTitle.png" class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="1.5s"/></h2>
+            		<img src="img/earlyBuilding.png" class="ani three-chengshi" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0.8s"/>
+            	</section>
+            	<section class="three-xiaoshi ani"  swiper-animate-effect="fadeOut" swiper-animate-duration="0.5s" swiper-animate-delay="5.8s">
+            		<h3><img src="img/lastBusTitle.png" class="lastBus ani"  swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="4.5s"/></h3>
+            		<div><img src="img/lastBusStation.png"  class="station ani"   swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="4s"/></div>
+            		<div class="BusCat ani" swiper-animate-effect="fadeOutLeft" swiper-animate-duration="1.5s" swiper-animate-delay="4.3s">
+            			<img src="img/bus.png" class="three-Bus ani"  swiper-animate-effect="fadeIn" swiper-animate-duration="0.2s" swiper-animate-delay="4.2s"/>
+            		</div>
+            		<div>
+            			<img src="img/lastBusAvatar.png" class="BusAvatar ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="4.3s"/>
+            		</div>
+            	</section>
+            	<section>
+            		<img src="img/myTeamBg.jpg" class="myTeam ani" swiper-animate-effect="fadeIn" swiper-animate-duration="2s" swiper-animate-delay="6.5s"/>
+            		<img src="img/myTeamWall.png" class="three-Wall ani" swiper-animate-effect="fadeIn" swiper-animate-duration="2s" swiper-animate-delay="6.5s"/>
+            		<img src="img/myTeamAvatar.png"  class="three-Avatr ani" swiper-animate-effect="fadeIn" swiper-animate-duration="2s" swiper-animate-delay="7s"/>
+            		<div class="three-text">
+            			<img src="img/myTeamTxt.png" class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s" swiper-animate-delay="7.2s"/>
+            			<img src="img/myTeamTxt01.png" class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s" swiper-animate-delay="7.5s"/>
+            			<img src="img/myTeamTxt02.png" class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s" swiper-animate-delay="7.8s"/>
+            			<img src="img/myTeamTxt03.png" class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s" swiper-animate-delay="8.1s"/>
+            		</div>
+            		<img src="img/myteamWhereTxt.png" class="WhereText ani" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s" swiper-animate-delay="8.4s"/>
+            	</section>
+            	<section  class="ani shanshuo"  swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="7.2s" >
+            		<img src="img/arrow-up.png" class="next-one ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2s" />
+            	</section>
+            </div>
+            <!--第四页-->
+            <div class="swiper-slide"style="background:#302e5c;">
+            	<section class="dianjishijian">
+            		<div class="lighoff">
+            			<img src="img/lightOffBg.jpg" />
+            			<img src="img/lightOff.png" id="lightOff"/>
+            			<img src="img/cornerTitle.png" class="ani" swiper-animate-effect="bounceInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.4s"/>
+            			<img src="img/cornerWall.png" />
+            		</div>
+            		<div class="diangliangf ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="1s">
+            			<img src="img/clickGuide.png" class="dianliang"/>
+            		</div>
+            	</section>
+            	<section  class="dianjishijian" style="display: none">
+            		<div class="lighOn">
+            			<img src="img/lightOnBg.jpg" class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.8s"/>
+            			<img src="img/lightOn.png" />
+            			<img src="img/weKnowYou.png" class="ani" swiper-animate-effect="dadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.4s"/>
+            			<img src="img/lightFlowers.png" class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.9s"/>
+            		</div>
+            	</section>
+            </div>
+            <!--第五页-->
+            <div class="swiper-slide aboutBg">
+            	<section>
+            		<img src="img/footCity.jpg" class="footCity ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0.8s"/>
+            		<img src="img/footAvatar.png" class="footAvatar ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="0.8s"/>
+            		<img src="img/footTx.png" class="footTx ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="2s"/>
+            	</section>
+            	<section class="sections ani"  swiper-animate-effect="fadeOut" swiper-animate-duration="1s" swiper-animate-delay="1.5s">
+            		<img src="img/footTa.png" class="footTa ani"  swiper-animate-effect="bounceInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.3s"/>
+            	</section>
+            	<section  class="ani shanshuo"  swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="1.5s" >
+            		<img src="img/arrow-up.png" class="next-one ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="2s" />
+            	</section>
+            </div>
+            <!--第六部分-->
+            <div class="swiper-slide runBj">
+            	<section>
+            		<img src="img/runAvatar.png" class="runAvatar ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="0.8s"/>
+            		<img src="img/runTxt.png" class="footTx ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="2s"/>
+            	</section>
+            	<section class="sections ani"  swiper-animate-effect="fadeOut" swiper-animate-duration="1s" swiper-animate-delay="1.5s">
+            		<img src="img/runTa.png" class="footTa ani"  swiper-animate-effect="bounceInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.3s"/>
+            	</section>
+            	<section  class="ani shanshuo"  swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="1.5s" >
+            		<img src="img/arrow-up.png" class="next-one ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.8s" />
+            	</section>
+            </div>
+            <!--第七部分-->
+            <div class="swiper-slide sevenBj">
+            	<section>
+            		<img src="img/salaryBg.png" class="salaryBg ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0.8s"/>
+            		<img src="img/salaryAvatar.png" class="salaryAvatar ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="1.5s"/>
+            		<img src="img/salaryTxt.png" class="footTx ani salaryTx" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="2.5s"/>
+            	</section>
+            	<section class="sections ani"  swiper-animate-effect="fadeOut" swiper-animate-duration="1s" swiper-animate-delay="2s">
+            		<img src="img/salaryTa.png" class="footTa ani salaryTx"  swiper-animate-effect="bounceInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.3s"/>
+            	</section>
+            	<section  class="ani shanshuo"  swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="1.5s" >
+            		<img src="img/arrow-up.png" class="next-one ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.8s" />
+            	</section>
+            </div>
+            <!--第八部分-->
+            <div class="swiper-slide eightBj">
+            	<img src="img/introLogo.png" class="introLogo"/>
+            	<img src="img/introFlowers.png" class="introFlowers"/>
+            	<img src="img/introAvatar.png" class="introAvatar"/>
+            	<img src="img/introStar.png" class="introStar ani infinite" swiper-animate-effect="flash" swiper-animate-duration="3s"/>
+            	<img src="img/ninetext.png" class="ninetext"/>
+            	<img src="img/introCloudy.png" class="introCloudy"/>
+            	<section  class="ani shanshuo"  swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="1.5s" >
+            		<img src="img/arrow-up.png" class="next-one ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.8s" />
+            	</section>
+            </div>
+            <!--第九部分-->
+            <div class="swiper-slide nineBj">
+            	<img src="img/endLogo.png" class="endLogo ani"swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s"/>
+            	<img src="img/endTxt.png" class="endTxt ani"swiper-animate-effect="bounceInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.4s"/>
+            	<img src="img/endMail.png" class="endMail ani"swiper-animate-effect="bounceInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+            	<img src="img/endClickGuide.png" class="endClickGuide ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.6s"/>
+            	<section class="sections ani infinite" swiper-animate-effect="pulse" swiper-animate-duration="2s" swiper-animate-delay="1s">
+            		<img src="img/endCloudys.png" class="endCloudys ani" swiper-animate-effect="bounceInDown" swiper-animate-duration="1s" swiper-animate-delay="0.8s"/>
+            	</section>
+            	<section class="sections ani infinite" swiper-animate-effect="bounce" swiper-animate-duration="4s" swiper-animate-delay="1s">
+            		<a href="http://mp.weixin.qq.com/s?__biz=MzAxMzU0NTAwNg==&mid=213225047&idx=1&sn=39477a33f09d3aa9872540c79ac272ef#rd"><img src="img/endAvatar.png" class="endAvatar ani" swiper-animate-effect="bounceInDown" swiper-animate-duration="1s" swiper-animate-delay="0.7s"/></a>
+            	</section>
+            	<img src="img/endBottomTxt.png" class="endBottomTxt ani"swiper-animate-effect="bounceInDown" swiper-animate-duration="1s" swiper-animate-delay="0.9s"/>
+            </div>
+        </div>
+    </div>
+    <!--横屏不显示-->
+    <div id="landscape"><p>请将屏幕竖屏浏览</p></div>
+    <!-- Swiper JS -->
+    <script src="js/swiper-3.4.1.min.js"></script>
+    <script src="js/swiper.animate1.0.2.min.js"></script>
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+    	 onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
+	     swiperAnimateCache(swiper); //隐藏动画元素 
+	     swiperAnimate(swiper); //初始化完成开始动画
+	  }, 
+	  	 onSlideChangeEnd: function(swiper){ 
+	     swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+	  },
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        direction: 'vertical'
+    });
+    var audios = document.getElementById("audio");
+    var music = document.getElementById("music");
+    audios.onclick =function() {
+    	if(audios.className=="audiosOn") {
+    		this.className="audiosOff"
+    		music.pause();
+    	} else{
+    		this.className="audiosOn";
+    		music.play();
+    	}
+    }
+    var lightOff=document.getElementById("lightOff");
+    var dianji = document.getElementsByClassName("dianjishijian");
+    lightOff.onclick =function(){
+    	dianji[0].style.display="none";
+    	dianji[1].style.display="block";
+    }
+    </script>
+</body>
+</html>

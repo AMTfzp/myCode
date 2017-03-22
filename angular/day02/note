@@ -1,0 +1,115 @@
+angularJS介绍https://angularjs.org/
+	1.诞生于2009年，由Misko Hevery等人创建，后为Google所收购。是一款优秀的前端JS框架，被用于Google的多款产品中。可以构建单一页面应用程序（SPAs：Single Page Apps应用程序）强制使用MVC的框架
+		M：model数据模型
+		V：查看界面
+		C：控制器逻辑控制 
+	2.AngularJS有着诸多特性最为核心的是：MVC，模块化，自动化双向数据绑定，指令与UI控件，依赖注入等
+		注意：一个页面只能有一个应用程序如果有多个应用程序下面的不起作用
+
+
+
+
+
+	ng-app:
+		1. 可以认为是应用程序的入口 一般情况下  都写在 html、body,用于开发单一应用页面的应用程序->只有一个完整文档结构的页面  其他全部都是View
+		2. 如果在一个文档中 使用多个ng-app只有第一个ng-app起作用
+
+	MVC
+		M:模型  数据模型 数据逻辑
+		V:视图  用于写界面
+		C:控制器 用于连接 模型和视图 并且可以在控制器里面写一些逻辑、初始化数据
+
+angularJS基本使用
+	1.导入angularJS文件
+	2.通过指令ng-app来指定应用程序起始和结束的位置一般放到html中
+angularJS表达式
+	{{}}
+	或者使用ng-bind
+angularJS中常用的指令
+	ng-app：可以指定应用程序的入口在指定的开始标签和结束标签之内可以angularJS的语法
+	ng-init：初始化数据;
+	ng-bind：绑定数据模型 
+	ng-model：数据模型 
+	ng-value：可以指定输入框的值
+	ng-repeat：重复执行可以直接通过这个指令遍历数组
+	ng-checked：通过绑定一个变量来更改checked的状态
+	ng-show：通过绑定一个变量来显示或隐藏元素
+	ng-hide：通过绑定一个变量来显示或隐藏元素
+	ng-class：可以通过这个指令动态更改类的值
+	ng-href：可以通过这个指令动态更改href的值{{}}
+	ng-src：可以通过这个指令动态更改src的值{{}}
+
+	ng-if：只有两个值是或者否判断根据条件确定要选择的内容
+	ng-switch：根据条件确定要选择的内容
+
+
+	ng控制器
+	ng单击
+angularJS中的模块
+	1.为防止污染全局变量angularJS通过模块来划分模块
+	模块化也让代码更加清晰
+
+
+
+
+angularJS中的控制器
+	控制器控制应用程序的数据
+	在HTML中通过ng-controller指定控制器
+	$ scope是连接模板，控制器，模型的纽带
+	使用步骤：
+		1.创建应用程序的入口模块
+			angular.module("app",["注入的模块名"]);
+		2.创建控制器模块->在html中引入 && 在入口模块中 注入控制器这个模块
+			app.js:	
+				angular.module("app",["app.controllers"]);
+			controllers.js:
+				var app = angular.module("app.controllers",[]);
+					app.controller("homeController",function ($scope) {
+	        			$scope.person = {
+	            		name:"小明"
+	        		};
+   				 });
+
+	4.使用控制器的注意事项
+		1.一个控制器一般只负责一个视图这个控制器中还有模型与视图的逻辑和行为所以不要复用控制器
+		2.不要在控制器中操作dom，可以指令中操作可以通过指令进行操作
+		3.angualar中 存在的服务 就不需要 自己在去写
+		4.控制器之间通过事件进行交互 
+angularJS中的模型
+	在HTML中通过ng-model指令设置或者通过ng-init初始化
+	绑定在$scope上
+angularJS中的模板指令
+$apply，$watch
+	$ apply：直接修改模型中的内容不会被同步的可以使用$ apply来传播模型中的内容 
+	$ watch：检测观察模型中内容的改变 
+    5.自定义服务？因为懒 可以把重读的代码 同意分装到一个服务中去 这样只要注入了这个服务的地方 都可以使用 里面的方法
+    service：可以通过这个函数 可以自定义服务
+    使用步骤
+    1.创建模块：angular.module()；
+    2.在使用的位置 注入模块 在使用的数组里去注入angular.module("app",["app.controllers","app.services"]);
+    3.在app.services这个模块里面去创建服务
+    模块的名字.service()；
+        里面有两个参数：1.第一个参数：字符串-->服务的名字
+                      2.第二个参数：函数-->里边写具体服务中的内容
+     4.在控制器中 去使用 创建好的服务
+            1.在控制器的回调函数中 注入服务：app.controller("findController",function($scope,action){})
+            2.使用服务中的方法 服务的名字 某个函数
+
+作业：
+	写一个用户信息界面
+		>头像
+		>用户名
+		>性别通过选择性别更新男头像或女头像
+		>个人状态
+		>更改个人信息的按钮默认状态下个人信息不允许修改点击按钮后才可以修改
+	2.通过json文件模拟新闻数据0显示新闻内容
+		图片标题内容
+	3.随机抽选的应用已选择好的移除全部选择完毕后重置数据数据需要本地化
+
+
+-----------
+0. $ apply，$ watch
+服务自定义服务
+依赖注入
+路由与视图
+集合jqueryMobile实现小功能

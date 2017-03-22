@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue/vue.js"></script>
+</head>
+<body>
+<div id="container">
+    <ul>
+        <li v-for="obj in list">
+            <h3 v-text="obj.type"></h3>
+            <ul>
+                <li v-for="time in obj.data">
+                    <p v-text="time.title"></p>
+                    <p v-text="time.des"></p>
+                    <p v-text="time.date"></p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script src="abc.js"></script>
+</body>
+</html>

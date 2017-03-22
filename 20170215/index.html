@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+		div:first-line{
+			color: red;
+		}
+		div:first-letter{
+			font-size:24px;
+			color: black;
+		}
+		div::selection{
+			color: pink;
+			background: palegreen;
+		}
+		/*div:before{
+			content: "[";
+		}*/
+		p{
+			width: 200px;
+			height: 200px;
+			background: gold;
+			margin-left: 100px;
+			position: relative;
+			border-radius: 5%;
+		}
+		p:before{
+			content: "";
+			display:block;
+			width: 0;
+			height: 0;
+			border-top:50px solid transparent;
+			border-bottom:50px solid transparent;
+			border-right:100px solid gold;
+			position: absolute;
+			top: 50px;
+			left: -100px;
+		}
+	</style>
+	<body>
+		<div>
+			　　国家制造强国建设领导小组以马凯副总理为组长，20多个国务院部委参与。而该领导小组编制的“1+X”规划体系，
+			“1”是指《中国制造2025》，“X”则包括国家制造业创新中心建设、工业强基、智能制造、绿色制造、高端装备创新等
+			5大工程实施指南，发展服务型制造和装备制造业质量品牌2个专项行动指南，及新材料、信息产业、医药工业和制造业
+			人才4个发展规划指南。
+		</div>
+		<p></p>
+	</body>
+</html>

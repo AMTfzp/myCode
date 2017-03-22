@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button{
+            text-align: center;
+            width: 40px;
+            height:40px;
+            background: #40d241;
+        }
+    </style>
+</head>
+<body>
+<div id="continer"></div>
+<script  src="addbutton.js"></script>
+<script>
+    (function () {
+
+        function init() {
+
+            new buttonPlugin.AddButton("continer");
+
+        }
+
+        init();
+
+
+    })();
+</script>
+</body>
+</html>

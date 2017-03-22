@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../angular.js"></script>
+</head>
+<body>
+<!--发布新闻的页面-->
+<div ng-controller="postNewsController">
+    <p>图片：<input type="text" ng-model="news.image"></p>
+    <p>标题：<input type="text" ng-model="news.title"></p>
+    <p>详细信息：<input type="text" ng-model="news.des"></p>
+    <button ng-click="toPost(news)">发布</button>
+</div>
+<!--读取新闻的页面-->
+<div ng-controller="readNewsController">
+    <p>{{num}}</p>
+    <button ng-click="update()">点击更新</button>
+    <ul>
+        <li ng-repeat="news in List track by $index">
+            <img ng-src="{{news.imagePath}}" alt="">
+            <h3 ng-bind="news.title"></h3>
+            <p ng-bind="news.des"></p>
+        </li>
+    </ul>
+
+
+</div>
+
+
+<script src="js/Services.js"></script>
+<script src="js/News.js"></script>
+<script src="js/Controller.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
